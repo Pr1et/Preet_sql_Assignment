@@ -1,0 +1,129 @@
+
+-- ASSIGNMENT SQL FILE
+
+-- 1) CREATE 2 TABLES
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    city VARCHAR(50)
+);
+
+CREATE TABLE Marks (
+    student_id INT,
+    subject VARCHAR(50),
+    marks INT
+);
+
+-- 2) INSERT DATA INTO BOTH TABLES
+INSERT INTO Students VALUES
+(1, 'Amit', 20, 'Delhi'),
+(2, 'Riya', 22, 'Mumbai'),
+(3, 'Karan', 21, 'Delhi'),
+(4, 'Neha', 23, 'Chennai');
+
+INSERT INTO Marks VALUES
+(1, 'Math', 85),
+(2, 'Math', 90),
+(3, 'Math', 75),
+(4, 'Math', 60),
+(1, 'Science', 80),
+(2, 'Science', 88),
+(3, 'Science', 70),
+(4, 'Science', 65);
+
+
+-- AND Operator
+SELECT * FROM Students
+WHERE city = 'Delhi' AND age > 20;
+
+-- OR Operator
+SELECT * FROM Students
+WHERE city = 'Delhi' OR city = 'Mumbai';
+
+-- NOT Operator
+SELECT * FROM Students
+WHERE NOT city = 'Mumbai';
+
+
+-- SUM of marks per subject
+SELECT subject, SUM(marks) AS total_marks
+FROM Marks
+GROUP BY subject;
+
+-- AVG of marks per subject
+SELECT subject, AVG(marks) AS avg_marks
+FROM Marks
+GROUP BY subject;
+
+-- COUNT students per subject
+SELECT subject, COUNT(student_id) AS total_students
+FROM Marks
+GROUP BY subject;
+
+
+-- Order students by age (ascending)
+SELECT * FROM Students
+ORDER BY age ASC;
+
+-- Order marks by highest first
+SELECT * FROM Marks
+ORDER BY marks DESC;
+
+
+-- Use of where
+SELECT * FROM Students
+WHERE age > 21;
+
+-- AND Operator
+SELECT * FROM Students
+WHERE city = 'Delhi' AND age > 20;
+
+-- OR Operator
+SELECT * FROM Students
+WHERE city = 'Delhi' OR city = 'Mumbai';
+
+-- NOT Operator
+SELECT * FROM Students
+WHERE NOT city = 'Mumbai';
+
+
+SELECT * FROM Students
+WHERE age BETWEEN 20 AND 22;
+
+
+SELECT * FROM Students
+WHERE city IN ('Delhi', 'Mumbai');
+
+SELECT * FROM Students
+WHERE city NOT IN ('Delhi', 'Mumbai');
+
+
+-- GROUP BY + SUM
+SELECT subject, SUM(marks) AS total_marks
+FROM Marks
+GROUP BY subject;
+
+-- GROUP BY + AVG
+SELECT subject, AVG(marks) AS avg_marks
+FROM Marks
+GROUP BY subject;
+
+-- GROUP BY + COUNT
+SELECT subject, COUNT(student_id) AS total_students
+FROM Marks
+GROUP BY subject;
+
+
+SELECT subject, AVG(marks) AS avg_marks
+FROM Marks
+GROUP BY subject
+HAVING AVG(marks) > 75;
+
+-- Order students by age (ascending)
+SELECT * FROM Students
+ORDER BY age ASC;
+
+-- Order marks by highest first
+SELECT * FROM Marks
+ORDER BY marks DESC;
